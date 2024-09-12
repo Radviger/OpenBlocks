@@ -13,6 +13,10 @@ buildscript {
         mavenCentral()
         // Minecraft Forge
         maven {
+            name 'Forge Mirror'
+            url 'http://unleveledgaming.org/libraries'
+        }
+        maven {
             name = 'Forge'
             url = 'http://files.minecraftforge.net/maven'
         }
@@ -25,7 +29,6 @@ buildscript {
 
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath 'net.thesilkminer.gradle.translationchecker:TranslationChecker:1.1'
     }
 }
 
@@ -193,17 +196,6 @@ task apiSrcJar(type: Jar) {
 artifacts {
     archives apiJar
     archives apiSrcJar
-}
-
-task updateTranslations(type: net.thesilkminer.gradle.plugin.translationchecker.tasks.TranslationCheckTask) {
-    modId = "openblocks"
-    templateFileName = "en_us.lang"
-}
-
-task checkTranslations(type: net.thesilkminer.gradle.plugin.translationchecker.tasks.TranslationCheckTask) {
-    modId = "openblocks"
-    dryRun = true
-    templateFileName = "en_us.lang"
 }
 
 task wrapper (type: Wrapper) {
